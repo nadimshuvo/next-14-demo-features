@@ -1,4 +1,4 @@
-export default function page() {
+export default function Home() {
   return (
     <div className="container mx-auto text-center">
       <div className="font-bold text-9xl">🕋</div>

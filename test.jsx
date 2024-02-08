@@ -1,6 +1,6 @@
 import Nav from "";
 import { Inter } from "";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import "./globals.css";
 import getAllPosts from "./lib/getAllPosts";
 
@@ -146,19 +146,38 @@ export default async function page({params}) {
 }
 
 class Clock extends React.Component {
+
     state = {
-        date: new Date(),
+        date: new Date();
     }
 
+    componentDidMount() {
+        this.clockTimer = setInterval(()=> this.tick(), 1000);
+    }
 
+    componentWillUnmount() {
+        clearInterval(this.clockTimer);
+    }
+
+    handleClick() {
+
+    }
+
+    tick() {
+        this.setState({
+            date: new Date(),
+        })
+    }
 
     render() {
-        const { date } = this.state;
-        const { locale } = this.props;
+        const { date, locale } = this.state;
 
-        return (<div>
-            <h1>My CLock</h1>
-            <h2>{date.toLocaleTimeString(locale)}</h2>
-        </div>)
+        return (
+            <>            
+            <h1>Clock</h1>
+                <h2>{date.toLocaleTimeString(locale)}</h2>
+                <Button change={this.handleClick} locale="en-US">Click Here</Button>
+            </>
+        )
     }
 }

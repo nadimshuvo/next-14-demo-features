@@ -144,3 +144,21 @@ export default async function page({params}) {
     )
 
 }
+
+class Clock extends React.Component {
+    state = {
+        date: new Date(),
+    }
+
+
+
+    render() {
+        const { date } = this.state;
+        const { locale } = this.props;
+
+        return (<div>
+            <h1>My CLock</h1>
+            <h2>{date.toLocaleTimeString(locale)}</h2>
+        </div>)
+    }
+}

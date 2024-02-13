@@ -1,9 +1,7 @@
-export class Emoji extends React.Component {
-  addEmoji = (text, emoji) => `${emoji} ${text} ${emoji}`;
+import withCounter from "";
 
-  render(override) {
-    let text = "I am the Emoji Component";
+const ClickCounter = (props) => {
+  const { count, increment } = props;
 
-    if (override) text = override;
-  }
-}
+  return <div></div>;
+};
